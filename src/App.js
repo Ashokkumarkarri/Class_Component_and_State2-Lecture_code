@@ -42,6 +42,10 @@ class App extends Component {
   render() {
     const {searchInput} = this.state
     console.log(searchInput)
+    const searchResults = userDetailsList.filter(eachUser =>
+      eachUser.name.includes(searchInput),
+    )
+
     return (
       <div className="app-container">
         <h1 className="title">Users List</h1>
@@ -51,7 +55,7 @@ class App extends Component {
           value={searchInput}
         />
         <ul className="list-container">
-          {userDetailsList.map(eachUser => (
+          {searchResults.map(eachUser => (
             <UserProfile userDetails={eachUser} key={eachUser.uniqueNo} />
           ))}
         </ul>
