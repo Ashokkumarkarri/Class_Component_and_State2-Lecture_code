@@ -3,7 +3,7 @@ import UserProfile from './components/UserProfile'
 
 import './App.css'
 
-const userDetailsList = [
+const initialUserDetailsList = [
   {
     uniqueNo: 1,
     imageUrl: 'https://assets.ccbp.in/frontend/react-js/esther-howard-img.png',
@@ -33,6 +33,7 @@ const userDetailsList = [
 class App extends Component {
   state = {
     searchInput: '',
+    userDetailsList: initialUserDetailsList,
   }
 
   onChangeSearchInput = event => {
@@ -40,7 +41,7 @@ class App extends Component {
   }
 
   render() {
-    const {searchInput} = this.state
+    const {searchInput, userDetailsList} = this.state
     console.log(searchInput)
     const searchResults = userDetailsList.filter(eachUser =>
       eachUser.name.includes(searchInput),
