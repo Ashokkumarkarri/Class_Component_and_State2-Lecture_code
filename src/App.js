@@ -31,10 +31,25 @@ const userDetailsList = [
 ]
 
 class App extends Component {
+  state = {
+    searchInput: '',
+  }
+
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
   render() {
+    const {searchInput} = this.state
+    console.log(searchInput)
     return (
       <div className="app-container">
         <h1 className="title">Users List</h1>
+        <input
+          type="search"
+          onChange={this.onChangeSearchInput}
+          value={searchInput}
+        />
         <ul className="list-container">
           {userDetailsList.map(eachUser => (
             <UserProfile userDetails={eachUser} key={eachUser.uniqueNo} />
